@@ -19,6 +19,7 @@
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
         h1, h2, h3, h4, h5 {
             margin-top: 0;
@@ -29,6 +30,14 @@
         }
         .contact p {
             margin: 5px 0;
+        }
+        .profile-pic {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
         }
         .section {
             margin-bottom: 20px;
@@ -45,14 +54,24 @@
         ul li {
             margin-bottom: 10px;
         }
+        .linkedin-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #0e76a8;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <img src="profile/profile-picture.jpg" alt="Profile Picture" class="profile-pic">
     <div class="contact">
         <h1>Guohua Zhang</h1>
         <p>Phone: 929-378-5877 | Email: alvinalwaysontheway@gmail.com</p>
+        <a href="https://www.linkedin.com/in/alvinzhanggoup/" class="linkedin-link">LinkedIn Profile</a>
     </div>
 
     <div class="section">
@@ -86,7 +105,7 @@
             </ul>
         </div>
         <div>
-            <h3>Walmart Inc, CA</h3>
+            <h3>Walmart Inc, CA</h4>
             <h4>Software Developer (2022/01 - 2023/05)</h4>
             <ul>
                 <li>Contributed to the continuous development of the next-gen membership platform (NGMP) in microservice architecture.</li>
