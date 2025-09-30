@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume of Guohua Zhang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
@@ -43,9 +44,12 @@
             margin-bottom: 20px;
         }
         .section-title {
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-            border-bottom: 2px solid #333;
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #333;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
         }
         ul {
             list-style: disc;
@@ -70,17 +74,27 @@
 </head>
 <body>
 
+<nav style="background-color: #333; padding: 10px; text-align: center;">
+    <a href="#summary" style="color: white; margin: 0 15px; text-decoration: none;">Summary</a>
+    <a href="#skills" style="color: white; margin: 0 15px; text-decoration: none;">Skills</a>
+    <a href="#experience" style="color: white; margin: 0 15px; text-decoration: none;">Experience</a>
+    <a href="#education" style="color: white; margin: 0 15px; text-decoration: none;">Education</a>
+</nav>
+
 <div class="container">
     <!-- <img src="./profile/profile-picture.jpg" alt="Profile Picture" class="profile-pic"> -->
     <div class="contact">
         <h1>Guohua Zhang</h1>
-        <p>Phone: 929-378-5877</p>
-        <p>Email: alvinalwaysontheway@gmail.com </p>
-        <a href="https://www.linkedin.com/in/alvinzhanggoup/" class="linkedin-link">LinkedIn Profile</a>
-        <a href="https://workmoreandtalkless.github.io/myProfile/" class="linkedin-link">Personal Website</a>
+        <p>929-378-5877</p>
+        <p> alvinalwaysontheway@gmail.com</p>
+        <a href="https://www.linkedin.com/in/alvinzhanggoup/" class="linkedin-link">
+             LinkedIn Profile
+        </a>
+        <a href="https://workmoreandtalkless.github.io/myProfile/" class="linkedin-link">
+             Personal Website
+        </a>
     </div>
-
-    <div class="section">
+    <div class="section" id="summary">
         <h2 class="section-title">Summary</h2>
         <ul>
             <li>Professional experience in software development specializing in Java backend development..</li>
@@ -90,7 +104,7 @@
         </ul>
     </div>
 
-    <div class="section">
+    <div class="section" id="skills">
         <h2 class="section-title">Skills</h2>
         <ul>
             <li><strong>Programming Languages:</strong> Java 8/11, JavaScript, TypeScript, SQL</li>
@@ -101,39 +115,22 @@
         </ul>
     </div>
 
-    <div class="section">
+    <div class="section" id="experience">
         <h2 class="section-title">Professional Experience</h2>
-        <div>
-            <h3> Amazon / Aditi</h3>
-            <h4>Full Stack Java Engineer(Feb 2025 – Present)</h4>
+        <details>
+            <summary>Amazon - Full Stack Java Engineer (Feb 2025 – Present)</summary>
             <ul>
-                <li>
-                    I am working on DEX Prime Badge team. Team is supporting and maintaining Prime member badge experiences across Amazon’s digital platforms and ensuring proper display and functionality of Prime badges/indicators that show Prime eligibility.
-                </li>
-                <li>
-                    Creating and maintaining display templates for Prime badge display and Implementing conditional logic for different badge states
-                </li>
-                <li>
-                    Building delivery promise messaging features and handling different delivery scenarios
-                </li>
-                <li>
-                    Debugging rendering issues and Fixing conditional logic problem
-                </li>
-                <li>
-                    Writing and maintaining code for Prime badge display logic
-                </li>
-                <li>
-                    Ensuring high performance and reliability of badge system
-                </li>
-                <li>
-                    Contributing to technical documentation
-                </li>
-
+                <li>I am working on DEX Prime Badge team. Team is supporting and maintaining Prime member badge experiences across Amazon’s digital platforms and ensuring proper display and functionality of Prime badges/indicators that show Prime eligibility.</li>
+                <li>Creating and maintaining display templates for Prime badge display and Implementing conditional logic for different badge states</li>
+                <li>Building delivery promise messaging features and handling different delivery scenarios</li>
+                <li>Debugging rendering issues and Fixing conditional logic problem</li>
+                <li>Writing and maintaining code for Prime badge display logic</li>
+                <li>Ensuring high performance and reliability of badge system</li>
+                <li>Contributing to technical documentation</li>
             </ul>
-        </div>
-        <div>
-            <h3>Capital One / PwC</h3>
-            <h4>Full Stack Java Engineer (Nov 2024 – Feb 2025)</h4>
+        </details>
+        <details>
+            <summary>Capital One / PwC - Full Stack Java Engineer (Nov 2024 – Feb 2025)</summary>
             <ul>
                 <li>Credit Oversight and Management System is the System of Record for all Consumer Credit Decisions made within Capital One. The application supports the formal approval process and life-cycle management of the Consumer Credit Decisions in compliance with Consumer Credit Policy.</li>
                 <li>Familiarity with the principles of CI/CD, including the benefits of continuous integration, delivery, and deployment in improving software development processes.</li>
@@ -145,10 +142,9 @@
                 <li>Developed Restful API using Spring Web, creating a Get Status controller endpoint to retrieve migration status information.</li>
                 <li>Performed version control using Git and worked in a cross-functional Agile environment comprising daily scrums, sprints, and retrospectives.</li>
             </ul>
-        </div>
-        <div>
-            <h3>Blockboard</h3>
-            <h4>Full Stack Java Developer (Aug 2023 – Aug 2024)</h4>
+        </details>
+        <details>
+            <summary>Blockboard - Full Stack Java Developer (Aug 2023 – Aug 2024)</summary>
             <ul>
                 <li>Building a fraud-free and trusted platform. As video pioneers and leaders, our north star is to establish the CTV/OTT space as a safe environment for investment to reach real humans for actual business results.</li>
                 <li>Familiarity with the principles of CI/CD, including the benefits of continuous integration, delivery, and deployment in improving software development processes.</li>
@@ -156,15 +152,13 @@
                 <li>Proficient in designing, querying, and managing relational databases using SQL.</li>
                 <li>Developed campaign, ad, and ad group multiple customized reusable components for the front-end Single Page Application.</li>
                 <li>Participated in the critical workflow of migrating the campaign database.</li>
-                <li>Participated in the critical workflow of database MySQL.</li>
                 <li>Managed full AWS Lifecycle, Provisioning, Automation, and Security setup on AWS.</li>
                 <li>Developed Restful API using Spring Web, creating a Get Status controller endpoint to retrieve migration status information.</li>
                 <li>Performed version control using Git and worked in a cross-functional Agile environment comprising daily scrums, sprints, and retrospectives.</li>
             </ul>
-        </div>
-        <div>
-            <h3>Cisco (short term assignment)</h3>
-            <h4>Software Developer (Dec 2023 – Jan 2024)</h4>
+        </details>
+        <details>
+            <summary>Cisco (short term assignment) - Software Developer (Dec 2023 – Jan 2024)</summary>
             <ul>
                 <li>Feature is a micro-service that serves the purpose of providing a mechanism for developers to set toggles on users.</li>
                 <li>Once set, the toggles can be used to trigger special logic targeted to only a few people. This pattern is very common in software development.</li>
@@ -180,10 +174,9 @@
                 <li>Implemented and optimized CI/CD pipelines as a result-driven DevOps engineer.</li>
                 <li>Performed version control using Git and worked in a cross-functional Agile environment comprising daily scrums, sprints, and retrospectives.</li>
             </ul>
-        </div>
-        <div>
-            <h3>Walmart Inc / Pilot Technologies</h3>
-            <h4>Full Stack Java Developer (Jan 2022 – May 2023)</h4>
+        </details>
+        <details>
+            <summary>Walmart Inc / Pilot Technologies - Full Stack Java Developer (Jan 2022 – May 2023)</summary>
             <ul>
                 <li>Worked on relational database systems like MySQL, PostgreSQL, Oracle, and SQL Server.</li>
                 <li>Integrated React with Java-based backend frameworks such as Spring Boot.</li>
@@ -201,10 +194,9 @@
                 <li>Implemented and optimized CI/CD pipelines as a result-driven DevOps engineer.</li>
                 <li>Performed version control using Git and worked in a cross-functional Agile environment comprising daily scrums, sprints, and retrospectives.</li>
             </ul>
-        </div>
-        <div>
-            <h3>CVS / Pilot Technologies</h3>
-            <h4>Full Stack Developer (March 2022 – July 2023)</h4>
+        </details>
+        <details>
+            <summary>CVS / Pilot Technologies - Full Stack Developer (March 2022 – July 2023)</summary>
             <ul>
                 <li>Participated in the continuous full stack development of an Air Support platform for operation management using a series of microservices, based on Java Spring and React.</li>
                 <li>Worked on CI/CD pipeline stages such as code commit, build, test, deploy, and monitor.</li>
@@ -216,10 +208,9 @@
                 <li>Worked on designing logical and physical data models using Oracle’s data modeling tools, such as Oracle SQL Developer Data Modeler.</li>
                 <li>Collaborated with the PM in an agile development environment with JIRA as a Scrum tool.</li>
             </ul>
-        </div>
-        <div>
-            <h3>Tesla / Antra</h3>
-            <h4>Full Stack Developer (Aug 2021 – Feb 2022)</h4>
+        </details>
+        <details>
+            <summary>Tesla / Antra - Full Stack Developer (Aug 2021 – Feb 2022)</summary>
             <ul>
                 <li>TMS is a logistics platform that uses technology to help businesses plan, execute, and optimize the physical movement of goods, both incoming and outgoing, ensuring the shipment is compliant and proper documentation is available.</li>
                 <li>Designed and implemented the Single Page Application using Microservice architecture with Angular 9 on the front end, focusing on the dashboard to show the status information of vehicles. Through the dashboard, the client and carrier can know the real-time status of the vehicle such as Ordered, In Transit, or Delivered, and can update data about the status.</li>
@@ -228,19 +219,17 @@
                 <li>Migrated the project from .Net Core MVC to Spring MVC. In .Net Core, implemented business logic using MVC Action Filters like Authorization filters, action filters, and exception filters. In Spring, used controllers to add a reference to business logic and developed DAO to handle queries using Hibernate.</li>
                 <li>Performed version control using Git and worked in a cross-functional Agile environment comprising daily scrums, sprints, and retrospectives, and used Jenkins for continuous integration.</li>
             </ul>
-        </div>
-        <div>
-            <h3>Repdai Inc (Intern)</h3>
-            <h4>Full Stack Developer (Jun 2020 – May 2021)</h4>
+        </details>
+        <details>
+            <summary>Repdai Inc (Intern) - Full Stack Developer (Jun 2020 – May 2021)</summary>
             <ul>
                 <li>Repdai is a real estate technology company and a real estate broker in the State of New York. The Repdai-Real Estate eCommerce platform is an e-commerce platform vertically specialized in the real estate market. Similar to the traditional e-commerce catalog and check-out process, the buyers and the sellers can search their desired properties on a map or a catalog and follow a step-by-step workflow to complete the buy and the sale of properties.</li>
                 <li>Participated in and designed the system for the Listing Contract section, View House section, Price Negotiation section, Contract Preparation section, and sub-workflows within the Contract Preparation process.</li>
                 <li>In the sub-workflow, participated in and designed functionalities such as Schedule House, Bargain, Buyer Make Financing Decision, Choose Attorney, Prepare Contract, Buyer Sign Contract, Buyer Make 10% Down Payment, and Seller Sign Contract.</li>
             </ul>
-        </div>
-        <div>
-            <h3>BetaNYC Inc. (Intern)</h3>
-            <h4>Full Stack Developer (Sep 2019 – May 2020)</h4>
+        </details>
+        <details>
+            <summary>BetaNYC Inc. (Intern) - Full Stack Developer (Sep 2019 – May 2020)</summary>
             <ul>
                 <li>BetaNYC is a civic organization dedicated to improving lives in New York through civic design, technology, and data. The Religious Facilities Project is based on the idea that many of Manhattan’s religious structures are at risk of disappearing. This project shows the location of religious facilities in each district or neighborhood.</li>
                 <li>Participated in data visualization, including data formatting, data analytics, and displaying data on the map using ArcGIS.</li>
@@ -248,30 +237,25 @@
                 <li>Participated in and designed the system for the web application.</li>
                 <li>Used Docker to package applications into containers.</li>
             </ul>
-        </div>
-        <div>
-            <h3>KPMG</h3>
-            <h4>Audit Assistant Manager (Jun 2012 – Sep 2017)</h4>
-            <p>
-                Project 1: IPO Audit for a medical company.
-            </p>
-                
-                <p>Project 2: Annual Report IPO Audit for a Consumer Goods Group Company.</p>
-                <p>Project 3: M&A Audit for a Matrimonial Company.</p>
-                <p>Project 4: Annual Report Audit for a French Foreign Investment Company.</p>
-                <p>Project 5: Annual Report Audit for a Foreign Investment Company.</p>
-            <ul> 
+        </details>
+        <details>
+            <summary>KPMG - Audit Assistant Manager (Jun 2012 – Sep 2017)</summary>
+            <p>Project 1: IPO Audit for a medical company.</p>
+            <p>Project 2: Annual Report IPO Audit for a Consumer Goods Group Company.</p>
+            <p>Project 3: M&A Audit for a Matrimonial Company.</p>
+            <p>Project 4: Annual Report Audit for a French Foreign Investment Company.</p>
+            <p>Project 5: Annual Report Audit for a Foreign Investment Company.</p>
+            <ul>
                 <li>Participated in the preliminary project planning, determining the level of audit significance, and establishing audit processes.</li>
                 <li>Engaged in on-site project work, guiding team members to complete the audit of one subsidiary, reviewing the preparation of audit working papers, and making management recommendations.</li>
                 <li>Summarized all significant issues found during the audits of subsidiaries and communicated with the on-site manager and senior manager to determine solutions and complete technical analysis memorandums.</li>
                 <li>Reviewed inter-company transactions and related working papers within the group.</li>
                 <li>Assisted the senior manager and on-site manager in reviewing the notes to the financial statements and related analysis memorandums.</li>
             </ul>
-        </div>
+        </details>
     </div>
-
     <div class="section">
-        <h2 class="section-title">Education</h2>
+        <h2 class="section-title" id="education">Education</h2>
         <div>
             <h3>Cuny Queens College, New York, NY</h3>
             <p>Master of Computer Science (December 2017 - December 2020)</p>
@@ -284,4 +268,7 @@
 </div>
 
 </body>
+<footer style="text-align: center; padding: 10px; background-color: #333; color: white; margin-top: 20px;">
+    <p>&copy; 2025 Guohua Zhang. All rights reserved.</p>
+</footer>
 </html>
