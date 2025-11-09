@@ -6,79 +6,330 @@
     <title>Resume of Guohua Zhang</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
         }
-        .container {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        
+        nav {
+            background: linear-gradient(90deg, #1a1a2e 0%, #16213e 100%);
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        nav a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 20px;
             position: relative;
         }
-        h1, h2, h3, h4, h5 {
-            margin-top: 0;
+        
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #64ffda;
+            transform: translateY(-2px);
         }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #64ffda;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        nav a:hover::after {
+            width: 80%;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.6s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1 {
+            font-size: 3em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            animation: slideDown 0.8s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h2, h3, h4, h5 {
+            margin-top: 0;
+            color: #333;
+        }
+        
         .contact {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 15px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
         }
+        
         .contact p {
-            margin: 5px 0;
+            margin: 8px 0;
+            color: #555;
+            font-size: 1.1em;
         }
+        
         .profile-pic {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 100px;
-            height: 100px;
+            top: 40px;
+            right: 40px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
+            border: 4px solid #667eea;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
         }
+        
+        .profile-pic:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
         .section {
-            margin-bottom: 20px;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.6s ease;
         }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         .section-title {
-            font-size: 1.8em;
+            font-size: 2em;
             font-weight: bold;
-            color: #333;
-            background-color: #f0f0f0;
-            padding: 10px;
-            border-radius: 5px;
+            color: #fff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
         }
+        
+        .section-title:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        
         ul {
-            list-style: disc;
-            padding: 0;
+            list-style: none;
+            padding: 0 0 0 20px;
         }
+        
         ul li {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            color: #444;
+            transition: all 0.3s ease;
         }
-        .linkedin-link {
-            display: block;
-            text-align: center;
-            margin-top: 10px;
-            text-decoration: none;
-            color: #0e76a8;
+        
+        ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 1.5em;
             font-weight: bold;
         }
+        
+        ul li:hover {
+            color: #667eea;
+            transform: translateX(5px);
+        }
+        
+        details {
+            margin: 20px 0;
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 240, 255, 0.9) 100%);
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        details:hover {
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        details[open] {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+        }
+        
+        summary {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #667eea;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            list-style: none;
+        }
+        
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        summary::before {
+            content: '▶';
+            display: inline-block;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+        
+        summary:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #764ba2;
+        }
+        
+        .linkedin-link {
+            display: inline-block;
+            margin: 10px 10px 0;
+            padding: 12px 30px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #0077b5 0%, #005582 100%);
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3);
+        }
+        
+        .linkedin-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 119, 181, 0.5);
+            background: linear-gradient(135deg, #005582 0%, #003d5c 100%);
+        }
+        
         .no-link {
             text-decoration: none;
             color: inherit;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(90deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            margin-top: 40px;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        strong {
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            nav a {
+                margin: 0 10px;
+                font-size: 0.9em;
+            }
+            
+            .profile-pic {
+                position: static;
+                margin: 20px auto;
+                display: block;
+            }
         }
     </style>
 </head>
 <body>
 
-<nav style="background-color: #333; padding: 10px; text-align: center;">
-    <a href="#summary" style="color: white; margin: 0 15px; text-decoration: none;">Summary</a>
-    <a href="#skills" style="color: white; margin: 0 15px; text-decoration: none;">Skills</a>
-    <a href="#experience" style="color: white; margin: 0 15px; text-decoration: none;">Experience</a>
-    <a href="#education" style="color: white; margin: 0 15px; text-decoration: none;">Education</a>
+<nav>
+    <a href="#summary">Summary</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
 </nav>
 
 <div class="container">
@@ -274,7 +525,7 @@
 </div>
 
 </body>
-<footer style="text-align: center; padding: 10px; background-color: #333; color: white; margin-top: 20px;">
+<footer>
     <p>&copy; 2025 Guohua Zhang. All rights reserved.</p>
 </footer>
 </html>
