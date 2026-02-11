@@ -1,531 +1,275 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume of Guohua Zhang</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-        }
-        
-        nav {
-            background: linear-gradient(90deg, #1a1a2e 0%, #16213e 100%);
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-        
-        nav a {
-            color: white;
-            margin: 0 20px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 8px 16px;
-            border-radius: 20px;
-            position: relative;
-        }
-        
-        nav a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #64ffda;
-            transform: translateY(-2px);
-        }
-        
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: #64ffda;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-        
-        nav a:hover::after {
-            width: 80%;
-        }
-        
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            position: relative;
-            backdrop-filter: blur(10px);
-            animation: fadeIn 0.6s ease;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        h1 {
-            font-size: 3em;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-            animation: slideDown 0.8s ease;
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        h2, h3, h4, h5 {
-            margin-top: 0;
-            color: #333;
-        }
-        
-        .contact {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 20px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            border-radius: 15px;
-            border: 2px solid rgba(102, 126, 234, 0.2);
-        }
-        
-        .contact p {
-            margin: 8px 0;
-            color: #555;
-            font-size: 1.1em;
-        }
-        
-        .profile-pic {
-            position: absolute;
-            top: 40px;
-            right: 40px;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 4px solid #667eea;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-        
-        .profile-pic:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-        
-        .section {
-            margin-bottom: 40px;
-            animation: fadeInUp 0.6s ease;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .section-title {
-            font-size: 2em;
-            font-weight: bold;
-            color: #fff;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 15px 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .section-title:hover {
-            transform: translateX(10px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-        }
-        
-        ul {
-            list-style: none;
-            padding: 0 0 0 20px;
-        }
-        
-        ul li {
-            margin-bottom: 15px;
-            padding-left: 30px;
-            position: relative;
-            color: #444;
-            transition: all 0.3s ease;
-        }
-        
-        ul li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: #667eea;
-            font-size: 1.5em;
-            font-weight: bold;
-        }
-        
-        ul li:hover {
-            color: #667eea;
-            transform: translateX(5px);
-        }
-        
-        details {
-            margin: 20px 0;
-            padding: 15px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 240, 255, 0.9) 100%);
-            border-radius: 12px;
-            border-left: 5px solid #667eea;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        details:hover {
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
-            transform: translateY(-2px);
-        }
-        
-        details[open] {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-        }
-        
-        summary {
-            font-weight: bold;
-            font-size: 1.2em;
-            color: #667eea;
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            list-style: none;
-        }
-        
-        summary::-webkit-details-marker {
-            display: none;
-        }
-        
-        summary::before {
-            content: '▶';
-            display: inline-block;
-            margin-right: 10px;
-            transition: transform 0.3s ease;
-        }
-        
-        details[open] summary::before {
-            transform: rotate(90deg);
-        }
-        
-        summary:hover {
-            background: rgba(102, 126, 234, 0.1);
-            color: #764ba2;
-        }
-        
-        .linkedin-link {
-            display: inline-block;
-            margin: 10px 10px 0;
-            padding: 12px 30px;
-            text-decoration: none;
-            color: white;
-            background: linear-gradient(135deg, #0077b5 0%, #005582 100%);
-            border-radius: 25px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3);
-        }
-        
-        .linkedin-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 119, 181, 0.5);
-            background: linear-gradient(135deg, #005582 0%, #003d5c 100%);
-        }
-        
-        .no-link {
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(90deg, #1a1a2e 0%, #16213e 100%);
-            color: white;
-            margin-top: 40px;
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
-        }
-        
-        strong {
-            color: #667eea;
-            font-weight: 600;
-        }
-        
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .container {
-                margin: 20px;
-                padding: 20px;
-            }
-            
-            h1 {
-                font-size: 2em;
-            }
-            
-            nav a {
-                margin: 0 10px;
-                font-size: 0.9em;
-            }
-            
-            .profile-pic {
-                position: static;
-                margin: 20px auto;
-                display: block;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abigail’s 6th Birthday Invitation</title>
+  <style>
+    :root{
+      --text:#eef3ff;
+      --muted: rgba(238,243,255,.75);
+      --card: rgba(255,255,255,.07);
+      --border: rgba(255,255,255,.16);
+      --shadow: 0 22px 70px rgba(0,0,0,.45);
+      --accent: #ffd54a;
+      --accent2:#4fc3ff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 28px 16px;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1100px 680px at 18% 18%, rgba(79,195,255,.22), transparent 62%),
+        radial-gradient(1000px 680px at 82% 22%, rgba(255,213,74,.16), transparent 58%),
+        linear-gradient(180deg, #071024, #0b1220);
+    }
+
+    /* Bigger centered content */
+    .card{
+      width: min(900px, 96vw);
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 28px;
+      padding: clamp(22px, 3.2vw, 34px);
+      text-align:center;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    /* 3-photo gallery rows */
+    .gallery{
+      margin: 6px auto 18px;
+      max-width: 780px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 760px){
+      .gallery{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 420px){
+      .gallery{ grid-template-columns: 1fr; }
+    }
+    .tile{
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      border-radius: 18px;
+      overflow:hidden;
+      box-shadow: 0 14px 35px rgba(0,0,0,.25);
+    }
+    .tile img{
+      width:100%;
+      height: 170px;
+      object-fit: cover;
+      display:block;
+    }
+
+    .avatar{
+      width: clamp(140px, 16vw, 190px);
+      height: clamp(140px, 16vw, 190px);
+      border-radius: 50%;
+      object-fit: cover;
+      display:block;
+      margin: 0 auto 16px;
+      border: 4px solid rgba(255,255,255,.92);
+      box-shadow:
+        0 20px 55px rgba(0,0,0,.38),
+        0 0 0 10px rgba(79,195,255,.10),
+        0 0 48px rgba(255,213,74,.10);
+    }
+
+    h1{
+      margin: 8px 0 6px;
+      font-size: clamp(26px, 3.2vw, 40px);
+      letter-spacing:.2px;
+    }
+    .sub{
+      margin:0 0 18px;
+      color: var(--muted);
+      line-height:1.6;
+      font-size: clamp(14px, 1.5vw, 16px);
+    }
+
+    .section{
+      margin: 14px auto 0;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      text-align:left;
+      max-width: 720px; /* center block */
+    }
+    .section-title{
+      margin: 0 0 10px;
+      font-weight: 800;
+      font-size: 15px;
+      color: rgba(238,243,255,.92);
+    }
+    .row{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      line-height:1.8;
+      font-size: 16px;
+      margin: 6px 0;
+    }
+    .label{
+      min-width: 98px;
+      color: var(--muted);
+    }
+
+    .notice{
+      margin-top: 12px;
+      border: 1px dashed rgba(255,255,255,.20);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+    }
+
+    /* Party place info list */
+    ul{
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 15px;
+    }
+
+    /* BIG RSVP */
+    .cta{
+      margin-top: 18px;
+      display:flex;
+      justify-content:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      width: min(720px, 100%);
+      padding: 18px 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,213,74,.55);
+      background: linear-gradient(180deg, rgba(255,213,74,.25), rgba(255,213,74,.12));
+      color: var(--text);
+      text-decoration:none;
+      font-weight: 900;
+      font-size: clamp(16px, 1.8vw, 20px);
+      letter-spacing:.2px;
+      box-shadow: 0 16px 40px rgba(0,0,0,.25);
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .btn:hover{ transform: translateY(-2px); filter: brightness(1.06); }
+    .dot{
+      width:12px;height:12px;border-radius:50%;
+      background: var(--accent2);
+      box-shadow: 0 0 22px rgba(79,195,255,.55);
+      flex:none;
+    }
+
+    .small{
+      margin: 14px 0 0;
+      font-size: 12px;
+      color: rgba(238,243,255,.58);
+    }
+  </style>
 </head>
+
 <body>
+  <main class="card">
 
-<nav>
-    <a href="#summary">Summary</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-</nav>
-
-<div class="container">
-    <!-- <img src="./profile/profile-picture.jpg" alt="Profile Picture" class="profile-pic"> -->
-    <div class="contact">
-        <h1>Guohua Zhang</h1>
-        <p>929-378-5877</p>
-        <p> alvinalwaysontheway@gmail.com</p>
-        <a href="https://www.linkedin.com/in/alvinzhanggoup/" class="linkedin-link">
-             LinkedIn Profile
-        </a>
-        <!-- <a href="https://workmoreandtalkless.github.io/myProfile/" class="linkedin-link">
-             Personal Website
-        </a> -->
-    </div>
-    <div class="section" id="summary">
-        <h2 class="section-title">Summary</h2>
-        <ul>
-            <li>Professional experience in software development, specializing in Java and Salesforce development.</li>
-            <li>Proficient in server-side web framework including Spring Framework and deploying Apex classes, triggers, and RESTful APIs for backend automation and system integration.</li>
-            <li>Skilled in designing and implementing Lightning Web Components (LWC) to deliver dynamic, responsive, and data-driven user interfaces integrated with backend business logic.</li>
-            <li>Sophisticated experience in RESTful API design and implementation. Solid knowledge and hands on experience in microservices and cloud migration.</li>
-            <li>Skilled in building scalable search and analytics solutions using Elasticsearch DSL, with hands-on experience in query construction, log analysis, and distributed data indexing</li>
-        </ul>
+    <!-- TOP: 3 pictures -->
+    <div class="gallery" aria-label="Top Photos">
+      <div class="tile"><img src="assets/top1.jpg" alt="Top photo 1"></div>
+      <div class="tile"><img src="assets/top2.jpg" alt="Top photo 2"></div>
+      <div class="tile"><img src="assets/top3.jpg" alt="Top photo 3"></div>
     </div>
 
-    <div class="section" id="skills">
-        <h2 class="section-title">Skills</h2>
-        <ul>
-            <li><strong>Programming Languages:</strong> Java 8/11, JavaScript, TypeScript, SQL</li>
-            <li><strong>Frameworks & Tools:</strong> Spring Boot, Spring Framework, Maven, Tomcat, Docker, JUnit, Git, Angular, Kafka, React, Vue</li>
-            <li><strong>Testing Tools:</strong> JUnit, Mockito</li>
-            <li><strong>Databases:</strong> MySQL, MongoDB, MS SQL, Cosmos DB</li>
-            <li><strong>Cloud Technologies:</strong> Azure, AWS</li>
-        </ul>
+    <!-- Abigail avatar -->
+    <img class="avatar" src="assets/abigail.jpg" alt="Abigail"
+         onerror="this.style.display='none'; document.getElementById('photoHelp').style.display='block';" />
+    <div id="photoHelp" style="display:none; color:rgba(238,243,255,.70); font-size:14px; margin-bottom:16px;">
+      (Upload Abigail’s photo as <b>assets/abigail.jpg</b>)
     </div>
 
-    <div class="section" id="experience">
-        <h2 class="section-title">Professional Experience</h2>
-        <details>
-            <summary>Amazon - Full Stack Java Engineer (Feb 2025 – Present)</summary>
-            <ul>
-                <li>I am working on DEX Prime Badge team. Team is supporting and maintaining Prime member badge experiences across Amazon’s digital platforms and ensuring proper display and functionality of Prime badges/indicators that show Prime eligibility.</li>
-                <li>Creating and maintaining display templates for Prime badge display and Implementing conditional logic for different badge states</li>
-                <li>Building delivery promise messaging features and handling different delivery scenarios</li>
-                <li>Debugging rendering issues and Fixing conditional logic problem</li>
-                <li>Writing and maintaining code for Prime badge display logic</li>
-                <li>Ensuring high performance and reliability of badge system</li>
-                <li>Contributing to technical documentation</li>
-            </ul>
-        </details>
-        <details>
-            <summary>Capital One / PwC - Full Stack Java Engineer (Nov 2024 – Feb 2025)</summary>
-            <ul>
-                <li>Credit Oversight and Management System is the System of Record for all Consumer Credit Decisions made within Capital One. The application supports the formal approval process and life-cycle management of the Consumer Credit Decisions in compliance within Consumer Credit Policy.</li>
-                <li>Built RESTful APIs and backend services using Spring Boot to integrate Salesforce modules with external financial services and internal microservices, ensuring seamless data flow across the platform.</li>
-                <li>Familiarity with the principles of CI/CD, including the benefits of continuous integration, delivery, and deployment in improving software development processes.</li>
-                <li>Worked on testing frameworks like Jest and A Testing Library to ensure the reliability of Angular components.</li>
-                <li>Proficient in designing, querying, and managing relational databases using SQL.</li>
-                <li>Developed Document Management, Monitoring, Policy Compliance management, and multiple customized reusable components for the front-end Single Page Application and back-end.</li>
-                <li>Participated in the critical workflow of migrating the campaign database.</li>
-                <li>Managed full AWS Life-cycle, Provisioning, Automation, and Security setup on AWS.</li>
-                <li>Developed Restful API using Spring Web, creating a Get Status controller endpoint to retrieve migration status information.</li>
-                <li>Performed version control using Git and worked in a cross-functional Agile environment comprising daily scrums, sprints, and retrospectives.</li>
-            </ul>
-        </details>
-        <details>
-            <summary>Blockboard - Full Stack Java Developer (Aug 2023 – Aug 2024)</summary>
-            <ul>
-                <li>Building a fraud-free and trusted platform. As video pioneers and leaders, our north star is to establish the CTV/OTT space as a safe environment for investment to reach real humans for actual business results.</li>
-                <li>Familiarity with the principles of CI/CD, including the benefits of continuous integration, delivery, and deployment in improving software development processes.</li>
-                <li>Worked on testing frameworks like Jest and A Testing Library to ensure the reliability of React components.</li>
-                <li>Proficient in designing, querying, and managing relational databases using SQL.</li>
-                <li>Developed campaign, ad, and ad group multiple customized reusable components for the front-end Single Page Application.</li>
-                <li>Participated in the critical workflow of migrating the campaign database.</li>
-                <li>Managed full AWS Lifecycle, Provisioning, Automation, and Security setup on AWS.</li>
-                <li>Developed Restful API using Spring Web, creating a Get Status controller endpoint to retrieve migration status information.</li>
-                <li>Performed version control using Git and worked in a cross-functional Agile environment comprising daily scrums, sprints, and retrospectives.</li>
-            </ul>
-        </details>
-        <details>
-            <summary>Cisco (short term assignment) - Software Developer (Dec 2023 – Jan 2024)</summary>
-            <ul>
-                <li>Feature is a micro-service that serves the purpose of providing a mechanism for developers to set toggles on users.</li>
-                <li>Once set, the toggles can be used to trigger special logic targeted to only a few people. This pattern is very common in software development.</li>
-                <li>Minimum impact to development. No contract changes other than URL & header changes.</li>
-                <li>Contributed to the continuous development of the feature in microservice architecture, based on Spring Boot, Tomcat, PostgreSQL, and Kafka.</li>
-                <li>Designed and developed several microservices targeted for feature toggle, with clear documentation on high-level designs and API specifications.</li>
-                <li>Participated in the critical workflow of using the database PostgreSQL.</li>
-                <li>Implemented feature microservice and Kafka consumers for data consuming.</li>
-                <li>Performed tests including source data load/process, data validation for automated data correction.</li>
-                <li>Developed Restful API using Spring Web, creating a Get Status controller endpoint to retrieve status.</li>
-                <li>Built unit tests for the critical modules to ensure code quality with JUnit and Mockito.</li>
-                <li>Used Kibana to monitor the logs and graphs for the feature service.</li>
-                <li>Implemented and optimized CI/CD pipelines as a result-driven DevOps engineer.</li>
-                <li>Performed version control using Git and worked in a cross-functional Agile environment comprising daily scrums, sprints, and retrospectives.</li>
-            </ul>
-        </details>
-        <details>
-            <summary>Walmart Inc / Pilot Technologies - Full Stack Java Developer (Jan 2022 – May 2023)</summary>
-            <ul>
-                <li>Worked on relational database systems like MySQL, PostgreSQL, Oracle, and SQL Server.</li>
-                <li>Integrated React with Java-based backend frameworks such as Spring Boot.</li>
-                <li>Understanding state management in React, using tools like Redux or Context API, is essential for handling complex application states.</li>
-                <li>Contributed to the continuous development of the next-gen membership platform (NGMP) in microservice architecture, based on Spring Boot, Tomcat, Azure Cosmos DB, MongoDB, and Kafka.</li>
-                <li>Designed and developed several microservices targeted for membership renewal, with clear documentation on high-level designs and API specifications.</li>
-                <li>Participated in the critical workflow of migrating the membership database from MongoDB to Azure Cosmos DB.</li>
-                <li>Implemented message processing microservice and Kafka consumers in event-processor and renewal repo for data consuming.</li>
-                <li>Performed tests including source data load/process, data validation in Azure Cosmos DB for automated data correction.</li>
-                <li>Developed Restful API using Spring Web, creating a Get Status controller endpoint to retrieve migration status information.</li>
-                <li>Developed and optimized complex full-text search queries using Elasticsearch DSL to power dynamic filtering and relevance-based search for user-facing applications.</li>
-                <li>Implemented aggregations, nested queries, and filters in Elasticsearch to support advanced analytics dashboards and log search features across distributed systems.</li>
-                <li>Built unit tests for the critical modules to ensure code quality with JUnit and Mockito.</li>
-                <li>Used Splunk to monitor the logs and graphs for migration service and customer Account Service.</li>
-                <li>Implemented and optimized CI/CD pipelines as a result-driven DevOps engineer.</li>
-                <li>Performed version control using Git and worked in a cross-functional Agile environment comprising daily scrums, sprints, and retrospectives.</li>
-            </ul>
-        </details>
-        <details>
-            <summary>CVS / Pilot Technologies - Full Stack Developer (March 2022 – July 2023)</summary>
-            <ul>
-                <li>Participated in the continuous full stack development of an Air Support platform for operation management using a series of microservices, based on Java Spring and React.</li>
-                <li>Engineered Lightning Web Components (LWC) to deliver a modern, interactive user experience for internal credit analysts, including custom dashboards, approval workflows, and dynamic decision-making interfaces.</li>
-                <li>Connected LWC components with backend logic through Apex controllers, utilizing @AuraEnabled methods and @wire decorators to retrieve, process, and display real-time credit data directly from Salesforce.</li>
-                <li>Designed and implemented Apex classes, triggers, and utility services to automate critical backend operations — such as credit scoring validation, eligibility checks, and routing of approval requests — reducing processing time and improving compliance accuracy.</li>
-                <li>Leveraged SOQL queries and Lightning Data Service to efficiently handle large-volume datasets, ensuring responsive data rendering and a smooth user experience in LWC interfaces</li>
-                <li>Worked on CI/CD pipeline stages such as code commit, build, test, deploy, and monitor.</li>
-                <li>Worked as the service owner of dashboard service; designed and implemented RESTful APIs for Rx.</li>
-                <li>Optimized the backend services for dashboard real-time status display and complex report generation.</li>
-                <li>Developed multiple customized reusable components for the frontend Single Page Application with Angular.</li>
-                <li>Built utility functions to optimize the front-end workflow, including top rank searching and quick show-all status, with JavaScript.</li>
-                <li>Worked on Oracle Forms and Reports development for creating user-friendly interfaces and generating custom reports.</li>
-                <li>Worked on designing logical and physical data models using Oracle’s data modeling tools, such as Oracle SQL Developer Data Modeler.</li>
-                <li>Collaborated with the PM in an agile development environment with JIRA as a Scrum tool.</li>
-            </ul>
-        </details>
-        <details>
-            <summary>Tesla / Antra - Full Stack Developer (Aug 2021 – Feb 2022)</summary>
-            <ul>
-                <li>TMS is a logistics platform that uses technology to help businesses plan, execute, and optimize the physical movement of goods, both incoming and outgoing, ensuring the shipment is compliant and proper documentation is available.</li>
-                <li>Designed and implemented the Single Page Application using Microservice architecture with Angular 9 on the front end, focusing on the dashboard to show the status information of vehicles. Through the dashboard, the client and carrier can know the real-time status of the vehicle such as Ordered, In Transit, or Delivered, and can update data about the status.</li>
-                <li>Developed Restful API using both ASP.Net Core Web API and Entity Framework Core on the backend. Used Microservices like the shipping service to focus on vehicle transactions and the Dashboard to call this shipment service API. The front end called the Dashboard API.</li>
-                <li>Created multiple TypeScript reusable components and services using RESTful API in Angular 9 built-in directives. Implemented functions like searching by VIN (Vehicle Identification Number) or Carrier to show the status of vehicles. Utilized Route Guard to determine whether navigation to a requested route in the application should be allowed for authentication.</li>
-                <li>Migrated the project from .Net Core MVC to Spring MVC. In .Net Core, implemented business logic using MVC Action Filters like Authorization filters, action filters, and exception filters. In Spring, used controllers to add a reference to business logic and developed DAO to handle queries using Hibernate.</li>
-                <li>Performed version control using Git and worked in a cross-functional Agile environment comprising daily scrums, sprints, and retrospectives, and used Jenkins for continuous integration.</li>
-            </ul>
-        </details>
-        <details>
-            <summary>Repdai Inc (Intern) - Full Stack Developer (Jun 2020 – May 2021)</summary>
-            <ul>
-                <li>Repdai is a real estate technology company and a real estate broker in the State of New York. The Repdai-Real Estate eCommerce platform is an e-commerce platform vertically specialized in the real estate market. Similar to the traditional e-commerce catalog and check-out process, the buyers and the sellers can search their desired properties on a map or a catalog and follow a step-by-step workflow to complete the buy and the sale of properties.</li>
-                <li>Participated in and designed the system for the Listing Contract section, View House section, Price Negotiation section, Contract Preparation section, and sub-workflows within the Contract Preparation process.</li>
-                <li>In the sub-workflow, participated in and designed functionalities such as Schedule House, Bargain, Buyer Make Financing Decision, Choose Attorney, Prepare Contract, Buyer Sign Contract, Buyer Make 10% Down Payment, and Seller Sign Contract.</li>
-            </ul>
-        </details>
-        <details>
-            <summary>BetaNYC Inc. (Intern) - Full Stack Developer (Sep 2019 – May 2020)</summary>
-            <ul>
-                <li>BetaNYC is a civic organization dedicated to improving lives in New York through civic design, technology, and data. The Religious Facilities Project is based on the idea that many of Manhattan’s religious structures are at risk of disappearing. This project shows the location of religious facilities in each district or neighborhood.</li>
-                <li>Participated in data visualization, including data formatting, data analytics, and displaying data on the map using ArcGIS.</li>
-                <li>Participated in Agile software development, attended daily meetings, and was involved in weekly sprints.</li>
-                <li>Participated in and designed the system for the web application.</li>
-                <li>Used Docker to package applications into containers.</li>
-            </ul>
-        </details>
-        <details>
-            <summary>KPMG - Audit Assistant Manager (Jun 2012 – Sep 2017)</summary>
-            <p>Project 1: IPO Audit for a medical company.</p>
-            <p>Project 2: Annual Report IPO Audit for a Consumer Goods Group Company.</p>
-            <p>Project 3: M&A Audit for a Matrimonial Company.</p>
-            <p>Project 4: Annual Report Audit for a French Foreign Investment Company.</p>
-            <p>Project 5: Annual Report Audit for a Foreign Investment Company.</p>
-            <ul>
-                <li>Participated in the preliminary project planning, determining the level of audit significance, and establishing audit processes.</li>
-                <li>Engaged in on-site project work, guiding team members to complete the audit of one subsidiary, reviewing the preparation of audit working papers, and making management recommendations.</li>
-                <li>Summarized all significant issues found during the audits of subsidiaries and communicated with the on-site manager and senior manager to determine solutions and complete technical analysis memorandums.</li>
-                <li>Reviewed inter-company transactions and related working papers within the group.</li>
-                <li>Assisted the senior manager and on-site manager in reviewing the notes to the financial statements and related analysis memorandums.</li>
-            </ul>
-        </details>
-    </div>
-    <div class="section">
-        <h2 class="section-title" id="education">Education</h2>
-        <div>
-            <h3>Cuny Queens College, New York, NY</h3>
-            <p>Master of Computer Science (December 2017 - December 2020)</p>
-        </div>
-        <div>
-            <h3>JiLin University of Financial and Economic, JiLin, China</h3>
-            <p>Bachelor of Business Administration(September 2006 - June 2010)</p>
-        </div>
-    </div>
-</div>
+    <h1>Abigail’s 6th Birthday Party 🎉</h1>
+    <p class="sub">Pokemon theme · You’re invited!</p>
 
+    <!-- Invitation info -->
+    <section class="section" aria-label="Invitation Info">
+      <p class="section-title">Invitation Info</p>
+      <div class="row"><span class="label">📅 Time:</span> <strong id="timeText">B</strong></div>
+      <div class="row"><span class="label">📍 Address:</span> <strong id="addrText">A</strong></div>
+    </section>
+
+    <!-- Notification -->
+    <section class="section notice" aria-label="Notification">
+      <p class="section-title">Notification</p>
+      <div id="noticeText">Please arrive on time. If you have any questions or dietary allergies, message me anytime.</div>
+    </section>
+
+    <!-- Party place info -->
+    <section class="section" aria-label="Party Place Info">
+      <p class="section-title">Party Place Info</p>
+      <ul id="placeList">
+        <li><strong>Parking:</strong> Street parking / Lot parking (edit this)</li>
+        <li><strong>Entrance:</strong> Main entrance / side entrance (edit this)</li>
+        <li><strong>Room / Floor:</strong> e.g., 2nd floor, Party Room A (edit this)</li>
+        <li><strong>What to bring:</strong> Comfortable clothes, socks, etc. (edit this)</li>
+      </ul>
+    </section>
+
+    <!-- BIG RSVP -->
+    <div class="cta">
+      <a class="btn" id="formLink" href="https://forms.gle/WnCNsNpR45dxbG8w6" target="_blank" rel="noopener">
+        <span class="dot"></span> RSVP (Adults Info) – Google Form
+      </a>
+    </div>
+
+    <!-- BOTTOM: 3 pictures -->
+    <div class="gallery" aria-label="Party Photos" style="margin-top:18px;">
+      <div class="tile"><img src="assets/party1.jpg" alt="Party photo 1"></div>
+      <div class="tile"><img src="assets/party2.jpg" alt="Party photo 2"></div>
+      <div class="tile"><img src="assets/party3.jpg" alt="Party photo 3"></div>
+    </div>
+
+    <p class="small">Tip: Upload photos to <b>assets/</b> in the same GitHub repo.</p>
+  </main>
+
+  <script>
+    // ========= CONFIG (edit these) =========
+    const PARTY_ADDRESS = "A";
+    const PARTY_TIME_TEXT = "B";
+
+    // Optional: update notification text
+    const NOTIFICATION_TEXT =
+      "Please arrive on time. If you have any questions or dietary allergies, message me anytime.";
+
+    // Optional: party place info bullets (edit these)
+    const PARTY_PLACE_INFO = [
+      "Parking: Street parking available. (edit me)",
+      "Entrance: Use the main entrance near the front sign. (edit me)",
+      "Room / Floor: Party room on the 2nd floor. (edit me)",
+      "What to bring: Comfortable clothes. (edit me)"
+    ];
+    // ======================================
+
+    document.getElementById("addrText").textContent = PARTY_ADDRESS;
+    document.getElementById("timeText").textContent = PARTY_TIME_TEXT;
+    document.getElementById("noticeText").textContent = NOTIFICATION_TEXT;
+
+    const ul = document.getElementById("placeList");
+    ul.innerHTML = "";
+    PARTY_PLACE_INFO.forEach(line => {
+      const li = document.createElement("li");
+      li.textContent = line;
+      ul.appendChild(li);
+    });
+  </script>
 </body>
-<footer>
-    <p>&copy; 2025 Guohua Zhang. All rights reserved.</p>
-</footer>
 </html>
