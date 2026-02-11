@@ -194,45 +194,118 @@
     filter: brightness(1.08);
     transform: translateY(-1px);
     }
-    .rsvp-mini{
-        margin-left: 10px;
-        display:inline-block;
-        padding: 3px 10px;
-    
-    ::contentReference[oaicite:0]{index=0}
+/* Small RSVP tag used in every line */
+.rsvp-mini{
+  margin-left: 10px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,213,74,.70);
+  background: linear-gradient(90deg, rgba(255,213,74,.22), rgba(79,195,255,.12));
+  color: var(--text);
+  text-decoration:none;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1;
+  box-shadow: 0 10px 26px rgba(0,0,0,.18);
+  transition: transform .14s ease, filter .14s ease, box-shadow .14s ease;
+  will-change: transform;
+}
+
+/* The moving effect on hover */
+.rsvp-mini:hover{
+  transform: translateY(-2px) scale(1.03);
+  filter: brightness(1.08);
+  box-shadow: 0 14px 34px rgba(0,0,0,.26);
+}
+
+/* tiny shine / highlight dot */
+.rsvp-mini::before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background: var(--accent2);
+  box-shadow: 0 0 16px rgba(79,195,255,.60);
+}
+
+/* Same hover-floating effect for normal text */
+.hover-float{
+  display:inline-block;
+  transition: transform .14s ease, filter .14s ease, text-shadow .14s ease;
+  will-change: transform;
+}
+
+.hover-float:hover{
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.08);
+  text-shadow: 0 14px 30px rgba(0,0,0,.35);
+}
+
     /* Colorful pills for time & address */
 .pills{
   display:flex;
   flex-wrap:wrap;
-  gap:10px;
+  gap:12px;
   margin-top:0;
 }
+/* Floating gradient pill */
 .pill{
   display:inline-flex;
   align-items:center;
-  gap:10px;
-  padding: 10px 14px;
+  gap:12px;
+  padding: 14px 18px;
   border-radius: 999px;
   font-weight: 900;
   letter-spacing:.2px;
-  border:1px solid rgba(255,255,255,.18);
-  box-shadow: 0 12px 30px rgba(0,0,0,.18);
-  color: rgba(238,243,255,.95);
+  color: rgba(238,243,255,.96);
+
+  /* gradient base (will be overridden by .time/.addr too) */
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.20);
+
+  /* floating look */
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  transition: transform .14s ease, filter .14s ease, box-shadow .14s ease;
 }
+
+.pill:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow:
+    0 22px 70px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+/* The small dot */
 .pill .dot3{
-  width:10px;height:10px;border-radius:50%;
+  width:12px;
+  height:12px;
+  border-radius:50%;
   background: var(--accent2);
-  box-shadow: 0 0 18px rgba(79,195,255,.55);
+  box-shadow: 0 0 22px rgba(79,195,255,.60);
   flex:none;
 }
+
+/* Time pill gradient (blue -> grey) */
 .pill.time{
-  border-color: rgba(79,195,255,.35);
-  background: linear-gradient(90deg, rgba(79,195,255,.30), rgba(255,213,74,.18));
+  border-color: rgba(79,195,255,.45);
+  background: linear-gradient(90deg, rgba(79,195,255,.35), rgba(255,255,255,.06));
 }
+
+/* Address pill gradient (gold -> grey) */
 .pill.addr{
-  border-color: rgba(255,213,74,.45);
-  background: linear-gradient(90deg, rgba(255,213,74,.28), rgba(79,195,255,.14));
+  border-color: rgba(255,213,74,.55);
+  background: linear-gradient(90deg, rgba(255,213,74,.28), rgba(255,255,255,.06));
 }
+
 
 /* Make the big RSVP button more colorful */
 .btn{
@@ -286,7 +359,8 @@
 
     </div>
 
-    <h1> Abigail’s 6th Birthday Party 🎉
+    <h1> 
+        <span class="hover-float">Abigail’s 6th Birthday Party 🎉</span>
         <a class="rsvp-inline" href="https://forms.gle/WnCNsNpR45dxbG8w6" target="_blank" rel="noopener">
             RSVP
         </a>
@@ -370,12 +444,12 @@ const PARTY_PLACE_INFO = [
 
 document.getElementById("timeText").innerHTML =
   `<div class="pills">
-     <span class="pill time"><span class="dot3"></span>📅 ${PARTY_TIME_TEXT} ${rsvpTag}</span>
+     <span class="pill time"><span class="dot3"></span>📅 ${PARTY_TIME_TEXT}</span>
    </div>`;
 
 document.getElementById("addrText").innerHTML =
   `<div class="pills">
-     <span class="pill addr"><span class="dot3"></span>📍 ${PARTY_ADDRESS} ${rsvpTag}</span>
+     <span class="pill addr"><span class="dot3"></span>📍 ${PARTY_ADDRESS}</span>
    </div>`;
 
    const ul = document.getElementById("placeList");
