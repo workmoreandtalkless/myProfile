@@ -83,6 +83,54 @@
         0 0 0 10px rgba(79,195,255,.10),
         0 0 48px rgba(255,213,74,.10);
     }
+    /* 1) Gallery tiles float + glow */
+.tile{
+  transition: transform .16s ease, filter .16s ease, box-shadow .16s ease;
+  will-change: transform;
+}
+.tile:hover{
+  transform: translateY(-4px) scale(1.02);
+  filter: brightness(1.06) saturate(1.08);
+  box-shadow:
+    0 24px 70px rgba(0,0,0,.35),
+    0 0 0 2px rgba(79,195,255,.18);
+}
+
+/* Optional: a soft “shine” overlay on hover */
+.tile{
+  position: relative;
+}
+.tile::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(600px 220px at 20% 10%, rgba(255,255,255,.18), transparent 60%);
+  opacity:0;
+  transition: opacity .16s ease;
+  pointer-events:none;
+}
+.tile:hover::after{
+  opacity:1;
+}
+
+/* 2) Make the round avatar active too */
+.avatar{
+  transition: transform .16s ease, filter .16s ease, box-shadow .16s ease;
+  will-change: transform;
+}
+.avatar:hover{
+  transform: translateY(-3px) scale(1.03);
+  filter: brightness(1.06) saturate(1.08);
+  box-shadow:
+    0 26px 70px rgba(0,0,0,.45),
+    0 0 0 12px rgba(79,195,255,.12),
+    0 0 60px rgba(255,213,74,.14);
+}
+
+/* 3) (Optional) Make images clickable feel nicer on mobile */
+@media (hover: none){
+  .tile:hover, .avatar:hover{ transform:none; }
+}
 
     h1{
       margin: 8px 0 6px;
@@ -429,7 +477,7 @@
 const PARTY_PLACE_INFO = [
   "Location: Long Island Children's Museum, 11 Davis Avenue, Garden City, NY 11530",
   "Parking: Use the museum parking lot (or nearby street parking).",
-  "Contact: (516) 224-5871",
+  "Contact: (347) 827-7101",
   "Entrance: Use the main entrance near the front sign.",
   "What to bring: Comfortable clothes."
 ];
