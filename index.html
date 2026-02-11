@@ -114,10 +114,10 @@
     .row{
       display:flex;
       gap:12px;
-      align-items:flex-start;
+      align-items:center;
       line-height:1.8;
       font-size: 16px;
-      margin: 6px 0;
+      margin: 10px 0;
     }
     .label{
       min-width: 98px;
@@ -177,6 +177,95 @@
       font-size: 12px;
       color: rgba(238,243,255,.58);
     }
+        .rsvp-inline{
+    margin-left: 10px;
+    display:inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,213,74,.55);
+    background: rgba(255,213,74,.12);
+    color: var(--text);
+    text-decoration:none;
+    font-weight: 900;
+    font-size: 14px;
+    vertical-align: middle;
+    }
+    .rsvp-inline:hover{
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    }
+    .rsvp-mini{
+        margin-left: 10px;
+        display:inline-block;
+        padding: 3px 10px;
+    
+    ::contentReference[oaicite:0]{index=0}
+    /* Colorful pills for time & address */
+.pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:0;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 900;
+  letter-spacing:.2px;
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+  color: rgba(238,243,255,.95);
+}
+.pill .dot3{
+  width:10px;height:10px;border-radius:50%;
+  background: var(--accent2);
+  box-shadow: 0 0 18px rgba(79,195,255,.55);
+  flex:none;
+}
+.pill.time{
+  border-color: rgba(79,195,255,.35);
+  background: linear-gradient(90deg, rgba(79,195,255,.30), rgba(255,213,74,.18));
+}
+.pill.addr{
+  border-color: rgba(255,213,74,.45);
+  background: linear-gradient(90deg, rgba(255,213,74,.28), rgba(79,195,255,.14));
+}
+
+/* Make the big RSVP button more colorful */
+.btn{
+  border: 1px solid rgba(255,213,74,.65);
+  background: linear-gradient(90deg, rgba(255,213,74,.32), rgba(79,195,255,.18));
+  position: relative;
+  overflow: hidden;
+}
+.btn::before{
+  content:"";
+  position:absolute;
+  top:-40%;
+  left:-30%;
+  width:60%;
+  height:180%;
+  transform: rotate(18deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.20), transparent);
+  animation: shine 3.6s infinite;
+  pointer-events:none;
+}
+@keyframes shine{
+  0%{ transform: translateX(-120%) rotate(18deg); opacity:.0; }
+  15%{ opacity:.9; }
+  35%{ opacity:.0; }
+  100%{ transform: translateX(260%) rotate(18deg); opacity:0; }
+}
+
+/* Make inline RSVP tag more "active" */
+.rsvp-inline{
+  border-color: rgba(255,213,74,.70);
+  background: linear-gradient(90deg, rgba(255,213,74,.24), rgba(79,195,255,.10));
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+}
   </style>
 </head>
 
@@ -194,17 +283,28 @@
     <img class="avatar" src="assets/abigail.jpg" alt="Abigail"
          onerror="this.style.display='none'; document.getElementById('photoHelp').style.display='block';" />
     <div id="photoHelp" style="display:none; color:rgba(238,243,255,.70); font-size:14px; margin-bottom:16px;">
-      (Upload Abigail’s photo as <b>assets/abigail.jpg</b>)
+
     </div>
 
-    <h1>Abigail’s 6th Birthday Party 🎉</h1>
-    <p class="sub">Pokemon theme · You’re invited!</p>
+    <h1> Abigail’s 6th Birthday Party 🎉
+        <a class="rsvp-inline" href="https://forms.gle/WnCNsNpR45dxbG8w6" target="_blank" rel="noopener">
+            RSVP
+        </a>
+    </h1>
+    <p class="sub">You’re invited!</p>
 
     <!-- Invitation info -->
     <section class="section" aria-label="Invitation Info">
       <p class="section-title">Invitation Info</p>
-      <div class="row"><span class="label">📅 Time:</span> <strong id="timeText">B</strong></div>
-      <div class="row"><span class="label">📍 Address:</span> <strong id="addrText">A</strong></div>
+        <div class="row">
+        <span class="label">📅 Time:</span>
+        <div id="timeText"></div>
+        </div>
+
+        <div class="row">
+        <span class="label">📍 Address:</span>
+        <div id="addrText"></div>
+        </div>
     </section>
 
     <!-- Notification -->
@@ -239,12 +339,12 @@
       <div class="tile"><img src="assets/party4.jpg" alt="Party photo 3"></div>
     </div>
 
-    <p class="small">Tip: Upload photos to <b>assets/</b> in the same GitHub repo.</p>
+    <!-- <p class="small">Tip: Upload photos to <b>assets/</b> in the same GitHub repo.</p> -->
   </main>
 
   <script>
     // ========= CONFIG (edit these) =========
-    const PARTY_ADDRESS = "(516)224-5871";
+    const PARTY_ADDRESS = "11 Davis Avenue Garden City, NY 11530";
     const PARTY_TIME_TEXT = "Sunday, March 8 from 3:30-5:00pm";
 
     // Optional: update notification text
@@ -252,25 +352,39 @@
       "Please arrive on time. If you have any questions or dietary allergies, message me anytime.";
 
     // Optional: party place info bullets (edit these)
-    const PARTY_PLACE_INFO = [
-      "Parking: Long Island Children's Museum, 11 Davis Avenue Garden City, NY 11530",
-      "Contact: (516)224-5871",
-      "Entrance: Use the main entrance near the front sign.",
-      "What to bring: Comfortable clothes."
-    ];
+const PARTY_PLACE_INFO = [
+  "Location: Long Island Children's Museum, 11 Davis Avenue, Garden City, NY 11530",
+  "Parking: Use the museum parking lot (or nearby street parking).",
+  "Contact: (516) 224-5871",
+  "Entrance: Use the main entrance near the front sign.",
+  "What to bring: Comfortable clothes."
+];
     // ======================================
 
-    document.getElementById("addrText").textContent = PARTY_ADDRESS;
-    document.getElementById("timeText").textContent = PARTY_TIME_TEXT;
-    document.getElementById("noticeText").textContent = NOTIFICATION_TEXT;
+    // document.getElementById("addrText").textContent = PARTY_ADDRESS;
+    // document.getElementById("timeText").textContent = PARTY_TIME_TEXT;
 
-    const ul = document.getElementById("placeList");
-    ul.innerHTML = "";
-    PARTY_PLACE_INFO.forEach(line => {
-      const li = document.createElement("li");
-      li.textContent = line;
-      ul.appendChild(li);
-    });
+
+    const RSVP_URL = "https://forms.gle/WnCNsNpR45dxbG8w6";
+    const rsvpTag = `<a class="rsvp-mini" href="${RSVP_URL}" target="_blank" rel="noopener">RSVP</a>`;
+
+document.getElementById("timeText").innerHTML =
+  `<div class="pills">
+     <span class="pill time"><span class="dot3"></span>📅 ${PARTY_TIME_TEXT} ${rsvpTag}</span>
+   </div>`;
+
+document.getElementById("addrText").innerHTML =
+  `<div class="pills">
+     <span class="pill addr"><span class="dot3"></span>📍 ${PARTY_ADDRESS} ${rsvpTag}</span>
+   </div>`;
+
+   const ul = document.getElementById("placeList");
+ul.innerHTML = "";
+PARTY_PLACE_INFO.forEach(line => {
+  const li = document.createElement("li");
+  li.innerHTML = `${line} ${rsvpTag}`;
+  ul.appendChild(li);
+});
   </script>
 </body>
 </html>
