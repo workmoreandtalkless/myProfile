@@ -387,8 +387,90 @@
   background: linear-gradient(90deg, rgba(255,213,74,.24), rgba(79,195,255,.10));
   box-shadow: 0 12px 30px rgba(0,0,0,.18);
 }
+
+/* ===== Lightbox (popup image viewer) ===== */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  display: none;            /* hidden by default */
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 9999;
+}
+
+.lightbox.is-open{
+  display: flex;
+}
+
+.lightbox__backdrop{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.72);
+  backdrop-filter: blur(2px);
+}
+
+.lightbox__content{
+  position: relative;
+  max-width: min(1100px, 96vw);
+  max-height: min(86vh, 860px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.lightbox__img{
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 30px 90px rgba(0,0,0,.55);
+  background: rgba(255,255,255,.03);
+}
+
+.lightbox__close{
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(20,24,40,.75);
+  color: rgba(238,243,255,.95);
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 16px 40px rgba(0,0,0,.35);
+  display: grid;
+  place-items: center;
+  transition: transform .14s ease, filter .14s ease;
+}
+
+.lightbox__close:hover{
+  transform: translateY(-2px) scale(1.03);
+  filter: brightness(1.08);
+}
+
+/* Make images feel clickable */
+.tile img,
+.avatar{
+  cursor: zoom-in;
+}
   </style>
 </head>
+<!-- Lightbox modal -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox__backdrop" data-close="true"></div>
+
+  <div class="lightbox__content" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Close">×</button>
+    <img class="lightbox__img" id="lightboxImg" alt="Preview" />
+  </div>
+</div>
 
 <body>
   <main class="card">
@@ -470,16 +552,16 @@
 
   <script>
     // ========= CONFIG (edit these) =========
-    const PARTY_ADDRESS = "11 Davis Avenue Garden City, NY 11530";
+    const PARTY_ADDRESS = "3 Davis Avenue Garden City, NY 11530";
     const PARTY_TIME_TEXT = "Sunday, March 8 from 3:30-5:00pm";
 
     // Optional: update notification text
     const NOTIFICATION_TEXT =
-      "Please arrive on time. If you have any questions or dietary allergies, message me anytime.";
+      "Please arrive on time. If you have any questions or dietary allergies, message and call me anytime. my phone number is (929)378-5877";
 
     // Optional: party place info bullets (edit these)
 const PARTY_PLACE_INFO = [
-  "Location: Long Island Children's Museum, 11 Davis Avenue, Garden City, NY 11530",
+  "Location: Long Island Children's Museum, 3 Davis Avenue, Garden City, NY 11530",
   "Parking: Use the museum parking lot (or nearby street parking).",
   "Contact: (347) 827-7101",
   "Entrance: Use the main entrance near the front sign.",
@@ -511,6 +593,67 @@ PARTY_PLACE_INFO.forEach(line => {
   li.innerHTML = `${line} ${rsvpTag}`;
   ul.appendChild(li);
 });
+
+  // ===== Lightbox behavior =====
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const lightboxClose = document.getElementById("lightboxClose");
+
+  function openLightbox(src, alt) {
+    if (!src) return;
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || "Preview";
+    lightbox.classList.add("is-open");
+    lightbox.setAttribute("aria-hidden", "false");
+    // prevent background scroll
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+    lightboxClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("is-open");
+    lightbox.setAttribute("aria-hidden", "true");
+    // allow scroll again
+    document.documentElement.style.overflow = "";
+    document.body.style.overflow = "";
+    // clear src so it stops downloading/playing if any
+    lightboxImg.src = "";
+  }
+
+  // Click any image to open
+  function bindLightboxToImages() {
+    const imgs = document.querySelectorAll("img");
+    imgs.forEach(img => {
+      // skip the lightbox preview image itself
+      if (img.id === "lightboxImg") return;
+
+      img.addEventListener("click", (e) => {
+        // Only open if it has a real source and is visible
+        if (!img.src || img.style.display === "none") return;
+        openLightbox(img.src, img.alt);
+      });
+    });
+  }
+
+  // Close handlers
+  lightboxClose.addEventListener("click", closeLightbox);
+
+  // click outside image closes (backdrop)
+  lightbox.addEventListener("click", (e) => {
+    if (e.target && e.target.dataset && e.target.dataset.close === "true") {
+      closeLightbox();
+    }
+  });
+
+  // ESC closes
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lightbox.classList.contains("is-open")) {
+      closeLightbox();
+    }
+  });
+
+  bindLightboxToImages();
   </script>
 </body>
 </html>
